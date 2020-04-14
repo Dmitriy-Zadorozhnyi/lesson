@@ -14,7 +14,6 @@ import org.testng.annotations.Test;
 
 
 @Listeners(ExecutionListener.class)
-
 public class SampleTest {
 
     protected static WebDriver driver;
@@ -34,8 +33,8 @@ public class SampleTest {
 
     @Test(description = "login", dependsOnMethods = "openPage")
     public void login(){
-        driver.findElement(By.className("header2__auth js-open-modal")).click();
-        driver.findElement(By.partialLinkText("/login/google-oauth2/")).click();
+        driver.findElement(By.className("header2__auth")).click();
+        driver.findElement(By.className("new-ic-google-white-square")).click();
         logger.info("Пользователь авторизовался");
     }
 
