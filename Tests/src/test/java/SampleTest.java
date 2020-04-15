@@ -20,13 +20,15 @@ import static io.github.bonigarcia.wdm.DriverManagerType.CHROME;
 @Listeners(ExecutionListener.class)
 public class SampleTest {
 
-    WebDriver wd = WebDriverFactory.getInstance("chrome");
+
     private Logger logger = LogManager.getLogger(SampleTest.class);
 
     @BeforeClass
     public void setUp() {
         logger.info("Драйвер поднят");
     }
+    WebDriver wd = WebDriverFactory.createDriver("f");
+
     @Test(description = "openPage")
     public void openPage() {
         wd.get("https://otus.ru/");
@@ -35,21 +37,21 @@ public class SampleTest {
 
     @Test(description = "login", dependsOnMethods = "openPage")
     public void login(){
-        driver.findElement(By.className("header2__auth")).click();
-        driver.findElement(By.className("new-ic-google-white-square")).click();
+        wd.findElement(By.className("header2__auth")).click();
+        wd.findElement(By.className("new-ic-google-white-square")).click();
         logger.info("Пользователь авторизовался");
     }
 
     @Test(description = "logout", dependsOnMethods = "login")
     public void logout(){
-        driver.findElement(By.partialLinkText("/logout/"));
+        wd.findElement(By.partialLinkText("/logout/"));
         logger.info("Пользователь вышел с личного кабинета");
     }
 
     @AfterClass
     public void setDown() {
-        if (driver != null) {
-            driver.quit();
+        if (wd != null) {
+            wd.quit();
         }
     }
 }
