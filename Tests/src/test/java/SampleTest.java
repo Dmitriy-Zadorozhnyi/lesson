@@ -1,5 +1,6 @@
 
 import Utility.ExecutionListener;
+import io.github.bonigarcia.wdm.DriverManagerType;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,6 +13,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import static io.github.bonigarcia.wdm.DriverManagerType.CHROME;
+
 
 @Listeners(ExecutionListener.class)
 public class SampleTest {
@@ -21,8 +24,9 @@ public class SampleTest {
 
     @BeforeClass
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.getInstance(CHROME).setup();
         driver = new ChromeDriver();
+
         logger.info("Драйвер поднят");
     }
     @Test(description = "openPage")
