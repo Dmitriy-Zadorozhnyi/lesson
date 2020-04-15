@@ -1,4 +1,5 @@
 
+import DriverManager.WebDriverFactory;
 import Utility.ExecutionListener;
 import io.github.bonigarcia.wdm.DriverManagerType;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -19,19 +20,16 @@ import static io.github.bonigarcia.wdm.DriverManagerType.CHROME;
 @Listeners(ExecutionListener.class)
 public class SampleTest {
 
-    protected static WebDriver driver;
+    WebDriver wd = WebDriverFactory.getInstance("chrome");
     private Logger logger = LogManager.getLogger(SampleTest.class);
 
     @BeforeClass
     public void setUp() {
-        WebDriverManager.getInstance(CHROME).setup();
-        driver = new ChromeDriver();
-
         logger.info("Драйвер поднят");
     }
     @Test(description = "openPage")
     public void openPage() {
-        driver.get("https://otus.ru/");
+        wd.get("https://otus.ru/");
         logger.info("Открыта страница отус");
     }
 
