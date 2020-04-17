@@ -11,7 +11,7 @@ public abstract class BaseTest {
 
     @BeforeClass
     public void beforeClass() {
-        driver = WebDriverFactory.getInstance().createDriver("chrome");
+        driver = WebDriverFactory.getInstance().createDriver(ConfigProperty.getInstance().getBrowserName());
         logger.info("Драйвер поднят");
         //String browserName = ConfigProperty.getInstance().getBrowserName();
     }

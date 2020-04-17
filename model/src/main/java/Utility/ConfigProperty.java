@@ -3,17 +3,17 @@ package Utility;
 import java.io.IOException;
 import java.util.Properties;
 
+import static java.lang.String.format;
+
 public enum ConfigProperty {
     INSTANCE;
 
+    public static ConfigProperty getInstance() { return INSTANCE; }
+
     private static final String PROPERTIES_FILE = "common.properties";
-    private final Properties properties;
+    private Properties properties;
 
-    public static ConfigProperty getInstance() {
-        return INSTANCE;
-    }
-
-    ConfigProperty() {
+    void LoadProperties() {
         properties = new Properties();
         try {
             properties.load(ConfigProperty.class.getResourceAsStream(PROPERTIES_FILE));
