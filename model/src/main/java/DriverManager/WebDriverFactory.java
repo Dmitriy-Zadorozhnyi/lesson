@@ -15,13 +15,12 @@ public enum WebDriverFactory {
     private static WebDriver webDriver = null;
 
     public static WebDriver createDriver(String browser) {
-        browser = browser.toLowerCase();
 
         if (webDriver != null) {
             return webDriver;
         }
 
-        if (CHROME.getTitle().equals(browser)) {
+        if (CHROME.getTitle().equalsIgnoreCase(browser)) {
             WebDriverManager.chromedriver().setup();
             webDriver = new ChromeDriver();
         } else {
