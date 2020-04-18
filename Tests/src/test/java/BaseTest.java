@@ -13,7 +13,6 @@ public abstract class BaseTest {
     public void beforeClass() {
         driver = WebDriverFactory.getInstance().createDriver(ConfigProperty.getInstance().getBrowserName());
         logger.info("Драйвер поднят");
-        //String browserName = ConfigProperty.getInstance().getBrowserName();
     }
 
     @AfterClass
