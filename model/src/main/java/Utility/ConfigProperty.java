@@ -13,13 +13,16 @@ public enum ConfigProperty {
     private static final String PROPERTIES_FILE = "common.properties";
     private Properties properties;
 
-    void LoadProperties() {
+    ConfigProperty() {
         properties = new Properties();
+        loadPropertiesFromFile();
+    }
+
+    private void loadPropertiesFromFile(){
         try {
-            properties.load(ConfigProperty.class.getResourceAsStream(PROPERTIES_FILE));
+            properties.load(ConfigProperty.class.getClassLoader().getResourceAsStream(PROPERTIES_FILE));
         } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Can't get properties from " + PROPERTIES_FILE, e);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -28,4 +31,5 @@ public enum ConfigProperty {
                 ? System.getProperty("browser")
                 : properties.getProperty("browser");
     }
+
 }
