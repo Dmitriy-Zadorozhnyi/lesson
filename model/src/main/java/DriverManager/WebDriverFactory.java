@@ -16,18 +16,22 @@ public enum WebDriverFactory {
 
     public static WebDriver createDriver(String browser) {
 
-        if (webDriver != null) {
-            return webDriver;
-        }
+     Browser currentBrowser = Browser.valueOf(browser.toUpperCase());
 
-        if (CHROME.getTitle().equalsIgnoreCase(browser)) {
-            WebDriverManager.chromedriver().setup();
-            webDriver = new ChromeDriver();
-        } else {
-            WebDriverManager.firefoxdriver().setup();
-            webDriver = new FirefoxDriver();
+        switch (currentBrowser) {
+            case CHROME:
+                WebDriverManager.chromedriver().setup();
+                webDriver = new ChromeDriver();
+                break;
+            case FIREFOX:
+                WebDriverManager.firefoxdriver().setup();
+                webDriver = new FirefoxDriver();
+                break;
+            default:
+                throw new UnsupportedOperationException(String.format("Browser %1$s is not supported!", browser));
         }
         return webDriver;
+
     }
     public WebDriver getDriver() {
         return webDriver;
