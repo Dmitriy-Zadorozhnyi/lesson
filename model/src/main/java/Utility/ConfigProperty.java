@@ -32,4 +32,24 @@ public enum ConfigProperty {
                 : properties.getProperty("browser");
     }
 
+    public boolean isSelenoidMode() {
+        return System.getProperty("selenoid.mode") != null
+                ? Boolean.parseBoolean(System.getProperty("selenoid.mode"))
+                : Boolean.parseBoolean(properties.getProperty("selenoid.mode"));
+    }
+
+    public String getRemoteDriverUrl() {
+        return System.getProperty("remote.driver.url") != null
+                ? System.getProperty("remote.driver.url")
+                : properties.getProperty("remote.driver.url");
+    }
+
+    public String getProxyHost() {
+        return properties.getProperty("proxy.host");
+    }
+
+    public int getProxyPort() {
+        return Integer.valueOf(properties.getProperty("proxy.port"));
+    }
+
 }
