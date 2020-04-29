@@ -21,10 +21,10 @@ public abstract class BaseTest {
         logger.info("Драйвер поднят");
     }
 
-    @AfterClass
-    public void afterClass() {
-        WebDriverFactory.getInstance().getDriver().quit();
-    }
+//    @AfterClass
+//    public void afterClass() {
+//        WebDriverFactory.getInstance().getDriver().quit();
+//    }
 
 
 }

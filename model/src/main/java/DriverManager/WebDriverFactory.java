@@ -12,6 +12,7 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
@@ -42,6 +43,8 @@ public enum WebDriverFactory {
                     chromeOptions.setExperimentalOption("useAutomationExtension", false);
                     chromeOptions.setExperimentalOption("prefs", prefs);
                     chromeOptions.addArguments("--no-sandbox");
+                    chromeOptions.addExtensions(new File("../Extensions/yandexAccess.crx"));
+                    //chromeOptions.addArguments("headless"); // запуск браузера без
                     chromeOptions.addArguments("window-size=1920,1080");
                     chromeOptions.setCapability("enableVNC", true);
                     DesiredCapabilities capabilities = DesiredCapabilities.chrome();
@@ -53,6 +56,7 @@ public enum WebDriverFactory {
                     prefs.put("profile.default_content_settings.popups", 0);
                     options.setExperimentalOption("prefs", prefs);
                     options.addArguments("start-maximized");
+                    options.addExtensions(new File("../Extensions/yandexAccess.crx"));
                     WebDriverManager.chromedriver().setup();
                     webDriver = new ChromeDriver(options);
                 }
