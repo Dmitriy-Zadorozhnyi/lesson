@@ -15,10 +15,11 @@ public class YandexTest extends BaseTest {
     @DataProvider(name = "test1")
     public Object[][] createData1() {
         return new Object[][] {
-                { "1" }, { "2" }, { "3" }, { "4" }, { "5" },
-                { "6" }, { "7" }, { "8" }, { "9" }, { "10" },
-                { "11" }, { "12" }, { "13" }, { "14" }, { "15" },
-                { "16" }, { "17" }, { "18" }, { "19" }, { "20" },
+                { "1" },
+//                { "1" }, { "2" }, { "3" }, { "4" }, { "5" },
+//                { "6" }, { "7" }, { "8" }, { "9" }, { "10" },
+//                { "11" }, { "12" }, { "13" }, { "14" }, { "15" },
+//                { "16" }, { "17" }, { "18" }, { "19" }, { "20" },
         };
     }
 
@@ -29,13 +30,7 @@ public class YandexTest extends BaseTest {
         //driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
         //driver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
         driver.get("https://market.yandex.ua/catalog--elektronika/54440");
-//        logger.info("Открыта главная страница сайта");
-//
-//
-////        new WebDriverWait(driver,30).until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@href,'catalog--elektronika')]")));
-//        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-//        WebElement catalogElektronika = driver.findElement(By.xpath("//a[contains(@href,'catalog--elektronika')]"));
-//        catalogElektronika.click();
+
         logger.info("Открыта страница электроники");
 
         new WebDriverWait(driver,30).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//a[contains(@href, 'catalog--mobilnye-telefony')]")));
@@ -109,7 +104,7 @@ public class YandexTest extends BaseTest {
         builder.click(addSamsung).build().perform();
         logger.info("Кликнули на елемент");
 
-        new WebDriverWait(driver,30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"popup-informer__content\"]")));
+        new WebDriverWait(driver,30).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class=\"popup-informer__content\"]")));
         notifyer = driver.findElement(By.xpath("//div[@class=\"popup-informer__content\"]"));
 
 

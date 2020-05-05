@@ -30,7 +30,7 @@ public enum WebDriverFactory {
 
     public static WebDriver createDriver(String browser) {
 
-     Browser currentBrowser = Browser.valueOf(browser.toUpperCase());
+        Browser currentBrowser = Browser.valueOf(browser.toUpperCase());
 
         switch (currentBrowser) {
             case CHROME:

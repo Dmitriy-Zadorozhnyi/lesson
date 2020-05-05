@@ -26,6 +26,10 @@ public enum ConfigProperty {
         }
     }
 
+    public String getBaseUrl() {
+        return properties.getProperty("site.url");
+    }
+
     public String getBrowserName() {
         return System.getProperty("browser") != null
                 ? System.getProperty("browser")
