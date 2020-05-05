@@ -11,20 +11,20 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathFactory;
 
 public abstract class BaseTest {
-    public Logger logger = LogManager.getLogger(BaseTest.class);
+    Logger logger = LogManager.getLogger(BaseTest.class);
     protected WebDriver driver;
-    protected WebElement element;
 
-    @BeforeClass
+    @BeforeMethod
     public void beforeClass() {
         driver = WebDriverFactory.getInstance().createDriver(ConfigProperty.getInstance().getBrowserName());
+        driver.manage().deleteAllCookies();
         logger.info("Драйвер поднят");
     }
 
-//    @AfterClass
-//    public void afterClass() {
-//        WebDriverFactory.getInstance().getDriver().quit();
-//    }
+    @AfterMethod
+    public void afterClass() {
+        driver.quit();
+    }
 
 
 }

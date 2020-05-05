@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 
 @Listeners(ExecutionListener.class)
-public class SampleTest extends BaseTest {
+public class Sample extends BaseTest {
 
     @Test(description = "openPage")
     public void openPage() {
@@ -46,26 +46,26 @@ public class SampleTest extends BaseTest {
         logger.info("Открыта страница отус");
     }
 
-    @Test(description = "switchProgramming", dependsOnMethods = "openPage")
-    public void program(){
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.findElement(By.xpath("//ngbd-alert-selfclosing/p/button")).click();
-        driver.findElement(By.xpath("//ngbd-alert-selfclosing/ngb-alert")).getText();
-    }
-//    @Test(description = "switchOperations", dependsOnMethods = "program")
-//    public void operations(){
+//    @Test(description = "switchProgramming", dependsOnMethods = "openPage")
+//    public void program(){
 //        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        driver.findElement(By.xpath("//a[@href=\"/categories/operations/\"]")).click();
+//        driver.findElement(By.xpath("//ngbd-alert-selfclosing/p/button")).click();
+//        driver.findElement(By.xpath("//ngbd-alert-selfclosing/ngb-alert")).getText();
 //    }
-//    @Test(description = "switchInformation-security", dependsOnMethods = "operations")
-//    public void informationSecurity(){
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        driver.findElement(By.xpath("//a[@href=\"/categories/information-security/\"]")).click();
-//    }
-//    @Test(description = "switchData-science", dependsOnMethods = "informationSecurity")
-//    public void dataScience(){
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        driver.findElement(By.xpath("//a[@href=\"/categories/data-science/\"]")).click();
-//    }
+////    @Test(description = "switchOperations", dependsOnMethods = "program")
+////    public void operations(){
+////        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+////        driver.findElement(By.xpath("//a[@href=\"/categories/operations/\"]")).click();
+////    }
+////    @Test(description = "switchInformation-security", dependsOnMethods = "operations")
+////    public void informationSecurity(){
+////        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+////        driver.findElement(By.xpath("//a[@href=\"/categories/information-security/\"]")).click();
+////    }
+////    @Test(description = "switchData-science", dependsOnMethods = "informationSecurity")
+////    public void dataScience(){
+////        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+////        driver.findElement(By.xpath("//a[@href=\"/categories/data-science/\"]")).click();
+////    }
 
 }
