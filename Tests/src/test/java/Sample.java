@@ -46,12 +46,12 @@ public class Sample extends BaseTest {
         logger.info("Открыта страница отус");
     }
 
-//    @Test(description = "switchProgramming", dependsOnMethods = "openPage")
-//    public void program(){
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        driver.findElement(By.xpath("//ngbd-alert-selfclosing/p/button")).click();
-//        driver.findElement(By.xpath("//ngbd-alert-selfclosing/ngb-alert")).getText();
-//    }
+    @Test(description = "switchProgramming", dependsOnMethods = "openPage")
+    public void program(){
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.findElement(By.xpath("//ngbd-alert-selfclosing/p/button")).click();
+        driver.findElement(By.xpath("//ngbd-alert-selfclosing/ngb-alert")).getText();
+    }
 ////    @Test(description = "switchOperations", dependsOnMethods = "program")
 ////    public void operations(){
 ////        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
